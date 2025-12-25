@@ -1,7 +1,7 @@
 package com.dimo.account_management_system_javaee;
 
-import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebServlet;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 
 import java.io.IOException;
 

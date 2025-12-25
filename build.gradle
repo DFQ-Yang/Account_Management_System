@@ -1,6 +1,7 @@
 plugins {
   id 'java'
   id 'war'
+  id 'org.gretty' version '3.1.0'
 }
 
 group 'com.dimo'
@@ -28,10 +29,21 @@ dependencies {
   compileOnly('jakarta.servlet:jakarta.servlet-api:5.0.0')
   compileOnly('jakarta.websocket:jakarta.websocket-api:2.0.0')
   compileOnly('jakarta.xml.ws:jakarta.xml.ws-api:3.0.1')
+  compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+  compileOnly("org.projectlombok:lombok:1.18.42")
+  annotationProcessor("org.projectlombok:lombok:1.18.42")
 
+  testCompileOnly("org.projectlombok:lombok:1.18.42")
+  testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
 }
 
+gretty {
+  httpPort=8080
+  contextPath='/'
+  servletContainer = 'tomcat9'
+}
 test {
 useJUnitPlatform()}
