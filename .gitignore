@@ -1,0 +1,84 @@
+############################
+# OS / Editor
+############################
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+############################
+# IntelliJ IDEA
+############################
+
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+############################
+# Gradle
+############################
+
+.gradle/
+build/
+
+# Gradle wrapper (????)
+!gradlew
+!gradlew.bat
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+############################
+# Java / JVM
+############################
+
+*.class
+*.log
+hs_err_pid*
+
+############################
+# Spring Boot
+############################
+
+# Spring Boot devtools
+.spring-boot-devtools.properties
+
+############################
+# Application configs (??)
+############################
+
+# ????????????????
+# application-local.yml
+# application-local.properties
+
+############################
+# IDE caches / tooling
+############################
+
+# Kotlin
+.kotlin/
+
+# Lombok
+.lombok/
+
+############################
+# Node / frontend (?????)
+############################
+
+node_modules/
+dist/
+npm-debug.log*
+yarn-error.log*
+
+############################
+# Misc
+############################
+
+*.tmp
+*.bak
+*.swp
