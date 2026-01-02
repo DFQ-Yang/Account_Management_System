@@ -2,10 +2,7 @@ package com.dimo.account_management_system_javaee.service;
 
 import com.dimo.account_management_system_javaee.dto.userDto;
 import com.dimo.account_management_system_javaee.pojo.Result;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
-public interface LoginService {
-
-
-    Result login(userDto dto) throws JsonProcessingException;
+public interface RegisterService {
+    Result register(userDto dto);
 }

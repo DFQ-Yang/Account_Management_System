@@ -1,9 +1,10 @@
 package com.dimo.account_management_system_javaee.controller;
 
-import com.dimo.account_management_system_javaee.dto.loginDto;
+import com.dimo.account_management_system_javaee.dto.userDto;
 import com.dimo.account_management_system_javaee.pojo.Result;
 import com.dimo.account_management_system_javaee.service.LoginService;
 import com.dimo.account_management_system_javaee.service.impl.LoginServiceImpl;
+import com.dimo.account_management_system_javaee.utils.userDtoLoaderUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.annotation.WebServlet;
 import lombok.extern.slf4j.Slf4j;
@@ -26,24 +27,17 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        StringBuilder sb = new StringBuilder();
-        String line;
-        BufferedReader br = req.getReader();
+        //Get dto from dtoLoader
+        userDto dto = userDtoLoaderUtil.userDtoLoaderUtil(req);
 
-        while ((line = br.readLine()) != null) {
-            sb.append(line);
-        }
-
-        //Pack received data into dto
-        loginDto dto = mapper.readValue(sb.toString(), loginDto.class);
-
-        //Get result f
+        //Get result from service
         Result res = loginService.login(dto);
 
         //Pack result and transit to json, then return as response.
         String json = mapper.writeValueAsString(res);
         resp.getWriter().write(json);
 
+        //log out info
         if(res.getCode() == 200) log.info("user: {} successfully log in", dto.getUsername());
         else log.info("Failed to login as {}", res.getMsg());
 
