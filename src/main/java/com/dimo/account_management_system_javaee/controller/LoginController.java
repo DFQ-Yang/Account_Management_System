@@ -37,6 +37,8 @@ public class LoginController extends HttpServlet {
         String json = mapper.writeValueAsString(res);
         resp.getWriter().write(json);
 
+        resp.setHeader("Authorization", res.getData().toString());
+
         //log out info
         if(res.getCode() == 200) log.info("user: {} successfully log in", dto.getUsername());
         else log.info("Failed to login as {}", res.getMsg());

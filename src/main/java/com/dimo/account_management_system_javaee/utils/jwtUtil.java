@@ -3,6 +3,7 @@ package com.dimo.account_management_system_javaee.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.crypto.SecretKey;
@@ -22,7 +23,7 @@ public class jwtUtil {
         String jwt = Jwts.builder()
                 .setClaims(claim)
                 .signWith(key)
-                .setExpiration(Date.from(Instant.now().plusMillis(Expire)))
+                .setExpiration(Date.from(Instant.now().plusSeconds(Expire)))
                 .compact();
         log.info("jwt generated");
         return jwt;
@@ -39,5 +40,9 @@ public class jwtUtil {
 
         log.info("jwt parsing success");
         return claims;
+    }
+
+    public static String loadJwt(HttpServletRequest req){
+        return req.getHeader("Authorization");
     }
 }
