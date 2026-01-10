@@ -4,7 +4,7 @@ import com.dimo.account_management_system_javaee.dto.userDto;
 import com.dimo.account_management_system_javaee.pojo.Result;
 import com.dimo.account_management_system_javaee.service.LoginService;
 import com.dimo.account_management_system_javaee.service.impl.LoginServiceImpl;
-import com.dimo.account_management_system_javaee.utils.userDtoLoaderUtil;
+import com.dimo.account_management_system_javaee.utils.dtoUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.annotation.WebServlet;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
+
 import java.io.IOException;
 
 
@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //Get dto from dtoLoader
-        userDto dto = userDtoLoaderUtil.userDtoLoaderUtil(req);
+        userDto dto = dtoUtils.loadUserDto(req);
 
         //Get result from service
         Result res = loginService.login(dto);

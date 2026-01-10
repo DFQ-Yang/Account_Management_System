@@ -7,4 +7,6 @@ import java.sql.SQLException;
 
 public interface AccountService {
     Result addAccount(String username, accountDto dto);
+
+    Result deleteAccount(Integer index);
 }

@@ -12,10 +12,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 
-import static com.dimo.account_management_system_javaee.utils.userDtoLoaderUtil.userDtoLoaderUtil;
+import static com.dimo.account_management_system_javaee.utils.dtoUtils.loadUserDto;
 
 @Slf4j
 @WebServlet(urlPatterns = "/register")
@@ -26,7 +25,7 @@ public class RegisterController extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
 
         //Get dto from dtoLoader
-        userDto dto = userDtoLoaderUtil(req);
+        userDto dto = loadUserDto(req);
 
         //Get result from service
         Result res = registerService.register(dto);

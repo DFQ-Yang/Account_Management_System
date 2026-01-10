@@ -34,4 +34,17 @@ public class AccountServiceImpl implements AccountService {
 
         return new Result(200, "add account successfully", null);
     }
+
+    @Override
+    public Result deleteAccount(Integer index) {
+        //Before you delete you have to check if the index exist, so that the result will change
+        //but you haven't finished the post request, so you would like to implement it later when you finished.
+
+        //trans username and dto to mapper
+        accountMapper.deleteAccount(index);
+
+
+
+        return new Result(200, "delete account successfully", null);
+    }
 }
